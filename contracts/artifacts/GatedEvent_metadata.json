@@ -1,0 +1,325 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nftAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "Id",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "Title",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "Host",
+						"type": "string"
+					}
+				],
+				"name": "NewEventCreated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_attendee",
+						"type": "address"
+					}
+				],
+				"name": "CaptureAttendance",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_details",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_host",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_datetime",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_location",
+						"type": "string"
+					}
+				],
+				"name": "CreateEvent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "NumberOFPeopleRegisterd",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_email",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_age",
+						"type": "uint8"
+					}
+				],
+				"name": "RegisterForEvent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "UnLockNFT",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_details",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_host",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_datetime",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_location",
+						"type": "string"
+					}
+				],
+				"name": "UpdateEvent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "ViewEvent",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "Id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "Title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "Details",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "Host",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "DateTime",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "Location",
+								"type": "string"
+							},
+							{
+								"components": [
+									{
+										"internalType": "string",
+										"name": "Name",
+										"type": "string"
+									},
+									{
+										"internalType": "uint8",
+										"name": "Age",
+										"type": "uint8"
+									},
+									{
+										"internalType": "string",
+										"name": "Email",
+										"type": "string"
+									},
+									{
+										"internalType": "address",
+										"name": "AttendeeAddress",
+										"type": "address"
+									}
+								],
+								"internalType": "struct GatedEvent.AttendeeDetails[]",
+								"name": "AttendeeInfo",
+								"type": "tuple[]"
+							}
+						],
+						"internalType": "struct GatedEvent.EventStruct",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/GatedEvent.sol": "GatedEvent"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/token/ERC721/IERC721.sol": {
+			"keccak256": "0x5ef46daa3b58ef2702279d514780316efaa952915ee1aa3396f041ee2982b0b4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2f8f2a76e23b02fc69e8cd24c3cb47da6c7af3a2d6c3a382f8ac25c6e094ade7",
+				"dweb:/ipfs/QmPV4ZS4tPVv4mTCf9ejyZ1ai57EEibDRj7mN2ARDCLV5n"
+			]
+		},
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x4296879f55019b23e135000eb36896057e7101fb7fb859c5ef690cf14643757b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://87b3541437c8c443ccd36795e56a338ed12855eec17f8da624511b8d1a7e14df",
+				"dweb:/ipfs/QmeJQCtZrQjtJLr6u7ZHWeH3pBnjtLWzvRrKViAi7UZqxL"
+			]
+		},
+		"contracts/GatedEvent.sol": {
+			"keccak256": "0xea1baa6ce8639fbc55903c74c633c05ade56c2ece04cd214ff72f60f5a8b0848",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dc84459f01b7f7e3655ef937d3ed6a6b5c1d7a3d8ba8f3eb7a1d0e1eaeae6609",
+				"dweb:/ipfs/QmQA52PsTN1GdpE7j2fCfi1ybwY1yyEdroCmn6g7wQxutz"
+			]
+		}
+	},
+	"version": 1
+}
