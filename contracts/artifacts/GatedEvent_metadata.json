@@ -6,13 +6,7 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_nftAddress",
-						"type": "address"
-					}
-				],
+				"inputs": [],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -90,6 +84,47 @@
 				"name": "CreateEvent",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "DetailsOfPeopleRegisterd",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "Name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint8",
+								"name": "Age",
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "Email",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "AttendeeAddress",
+								"type": "address"
+							}
+						],
+						"internalType": "struct GatedEvent.AttendeeDetails[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -313,11 +348,11 @@
 			]
 		},
 		"contracts/GatedEvent.sol": {
-			"keccak256": "0xea1baa6ce8639fbc55903c74c633c05ade56c2ece04cd214ff72f60f5a8b0848",
+			"keccak256": "0x4373cfe6f0e7fa010f5f4cdccf050c373afc688eebe2018e8a0b5eb852f3f857",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://dc84459f01b7f7e3655ef937d3ed6a6b5c1d7a3d8ba8f3eb7a1d0e1eaeae6609",
-				"dweb:/ipfs/QmQA52PsTN1GdpE7j2fCfi1ybwY1yyEdroCmn6g7wQxutz"
+				"bzz-raw://eaf3991cdfb99df37d9c5e61466afc59ebab89820bb9491462c62c4d032b4f4a",
+				"dweb:/ipfs/QmQ3RXbNCYhqoTdRwCB9VfBCkSeBZMQcTTixnM36MjCeaL"
 			]
 		}
 	},

@@ -5,10 +5,10 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
 contract GatedEvent {
     //Address of platfrom NFT
-    address NFTAddress;
+    //address NFTAddress;
 
-    constructor(address _nftAddress) {
-        NFTAddress = _nftAddress;
+    constructor() /*address _nftAddress*/ {
+        //NFTAddress = _nftAddress;
     }
 
     // Events
@@ -30,6 +30,7 @@ contract GatedEvent {
         AttendeeDetails[] AttendeeInfo; // Struct to capture attendance details and link it to event.
 
         //TODO: Add MetaData for Images.
+
         //TODO: ADVANCE: MetaData for Google API Location.
     }
 
@@ -113,16 +114,23 @@ contract GatedEvent {
 
         eventDetailsUpdate.AttendeeInfo.push(attendeeDetails);
 
-        //TODO: Change to Capture details of the person eg. Name, Age etc. Not just the address.
+        //DONE: Change to Capture details of the person eg. Name, Age etc. Not just the address.
+
         //TODO: Collect and Lock the NFT of the person registerd.
+    }
+
+    function DetailsOfPeopleRegisterd(
+        uint256 _id
+    ) external view returns (AttendeeDetails[] memory) {
+        return eventMapping[_id].AttendeeInfo;
+
+        //DONE: Returns details of people registerd for an event e.g Name, Age, etc.
     }
 
     function NumberOFPeopleRegisterd(
         uint256 _id
     ) external view returns (uint256) {
         return eventMapping[_id].AttendeeInfo.length;
-
-        //TODO: Change function name to details of people registered for event and get their details e.g Name, Age, etc.
     }
 
     function CaptureAttendance(uint256 _id, address _attendee) external {
@@ -132,6 +140,6 @@ contract GatedEvent {
 
     function UnLockNFT(uint256 _id) external {
         //TODO: Check if event time is more than block.timestamp
-        // Allow NFT to be UnLocked.
+        //TODO: Allow NFT to be UnLocked.
     }
 }
