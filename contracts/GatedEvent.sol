@@ -2,13 +2,14 @@
 pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
 contract GatedEvent {
     //Address of platfrom NFT
-    //address NFTAddress;
+    address public NFTAddress;
 
-    constructor() /*address _nftAddress*/ {
-        //NFTAddress = _nftAddress;
+    constructor(address _nftAddress) {
+        NFTAddress = _nftAddress;
     }
 
     // Events
@@ -16,6 +17,12 @@ contract GatedEvent {
         uint256 indexed Id,
         string indexed Title,
         string indexed Host
+    );
+
+    event ApprovalForAll(
+        address indexed owner,
+        address indexed operator,
+        bool approved
     );
 
     // Struct Decleration to group event data.
@@ -96,11 +103,26 @@ contract GatedEvent {
         return eventMapping[_id];
     }
 
+    function GetNFTApproval(
+        address _operatorAddress,
+        uint256 _tokenId
+    ) external {
+        IERC721(NFTAddress).approve(_operatorAddress, _tokenId);
+    }
+
+    function SeeBalance(address _ownerAddress) external view returns (uint256) {
+        return IERC721(NFTAddress).balanceOf(_ownerAddress);
+    }
+
+    function SeeApproval(uint256 _tokenId) external view returns (address) {
+        return IERC721(NFTAddress).getApproved(_tokenId);
+    }
+
     function RegisterForEvent(
         uint256 _id,
         string memory _name,
         string memory _email,
-        uint8 _age
+        uint8 _age /* uint256 _tokenId */
     ) external {
         //eventMapping[_id].Registerd.push(msg.sender);
 
@@ -117,29 +139,45 @@ contract GatedEvent {
         //DONE: Change to Capture details of the person eg. Name, Age etc. Not just the address.
 
         //TODO: Collect and Lock the NFT of the person registerd.
+
+        //To Receive NFT Tokens
+        // IERC721Receiver(NFTAddress).onERC721Received(
+        //     address(this),
+        //     msg.sender,
+        //     _tokenId,
+        //     ""
+        // );
+
+        // IERC721(NFTAddress).transferFrom(msg.sender, address(this), _tokenId);
+        // IERC721Receiver(NFTAddress).onERC721Received(
+        //     address(this),
+        //     msg.sender,
+        //     _tokenId,
+        //     ""
+        // );
     }
 
-    function DetailsOfPeopleRegisterd(
-        uint256 _id
-    ) external view returns (AttendeeDetails[] memory) {
-        return eventMapping[_id].AttendeeInfo;
+    // function DetailsOfPeopleRegisterd(
+    //     uint256 _id
+    // ) external view returns (AttendeeDetails[] memory) {
+    //     return eventMapping[_id].AttendeeInfo;
 
-        //DONE: Returns details of people registerd for an event e.g Name, Age, etc.
-    }
+    //     //DONE: Returns details of people registerd for an event e.g Name, Age, etc.
+    // }
 
-    function NumberOFPeopleRegisterd(
-        uint256 _id
-    ) external view returns (uint256) {
-        return eventMapping[_id].AttendeeInfo.length;
-    }
+    // function NumberOFPeopleRegisterd(
+    //     uint256 _id
+    // ) external view returns (uint256) {
+    //     return eventMapping[_id].AttendeeInfo.length;
+    // }
 
-    function CaptureAttendance(uint256 _id, address _attendee) external {
-        //TODO: Burn the NFT if captured as attended.
-        //TODO: Mint new NFT with and increament on the MetaData of events attended.
-    }
+    // function CaptureAttendance(uint256 _id, address _attendee) external {
+    //     //TODO: Burn the NFT if captured as attended.
+    //     //TODO: Mint new NFT with and increament on the MetaData of events attended.
+    // }
 
-    function UnLockNFT(uint256 _id) external {
-        //TODO: Check if event time is more than block.timestamp
-        //TODO: Allow NFT to be UnLocked.
-    }
+    // function UnLockNFT(uint256 _id) external {
+    //     //TODO: Check if event time is more than block.timestamp
+    //     //TODO: Allow NFT to be UnLocked.
+    // }
 }
